@@ -31,7 +31,7 @@ Laravel 贴合实际需求同时满足多种通道的短信发送组件
 ## 安装
 
 ```php
-composer require ibrand/laravel-sms:~1.0 -vvv
+composer require papayacloud/laravel-sms:~1.0 -vvv
 ```
 
 低于 Laravel5.5 版本
