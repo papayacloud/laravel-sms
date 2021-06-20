@@ -27,19 +27,15 @@ class SmsController extends Controller
     {
         $mobile = request('mobile');
 
-        if(!config('app.debug') && !Sms::verifyMobile($mobile)){
-            return response()->json(['success' => false, 'message' => '无效手机号码']);
-        }
-
         if (!Sms::canSend($mobile)) {
-            return response()->json(['success' => false, 'message' => '每60秒发送一次']);
+            return response()->json(['success' => false, 'message' => 'It can only be sent every 60 seconds.']);
         }
 
         if (!Sms::send($mobile)) {
-            return response()->json(['success' => false, 'message' => '短信发送失败']);
+            return response()->json(['success' => false, 'message' => 'message failed to send.']);
         }
 
-        return response()->json(['success' => true, 'message' => '短信发送成功']);
+        return response()->json(['success' => true, 'message' => 'The text message was sent successfully.']);
     }
 
     /**
